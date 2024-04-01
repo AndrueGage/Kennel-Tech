@@ -14,6 +14,9 @@ export default function Nav() {
                         <Link to="account" className="animate">My Account</Link>
                     </li>
                     <li>
+                        <Link to="calendar" className="animate">Calendar</Link>
+                    </li>
+                    <li>
                         <Link to="reservations" className="animate">My Reservations</Link>
                     </li>
                     <li>

@@ -1,5 +1,9 @@
-export default function CalendarPage(){
+import Calendar from '../components/DatePicker'
+export default function CalendarPage() {
     return (
-        <p>Calendar</p>
+        <div>
+            <p>Calendar</p>
+            <Calendar />
+        </div>
     )
 }
