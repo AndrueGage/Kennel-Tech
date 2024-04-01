@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
+
 export default function Nav() {
     return (
         <header>
         <div className="navbar">
-            <h1 className="name">Andrue Desmarais</h1>
+            <h1>Kennel Tech</h1>
             <nav>
                 <ul className="navlist">
                     <li>
