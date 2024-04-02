@@ -5,3 +5,7 @@
   --pistachio: #8cc084;
   --battleship-grey: #968e85;
 }
+
+* {
+  background-color: white;
+}
