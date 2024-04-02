@@ -4,7 +4,7 @@ export default function ClientNav() {
     return (
         <header>
         <div className="navbar">
-            <h1>Kennel Tech</h1>
+            <h1 className='kenneltech'>Kennel Tech</h1>
             <nav>
                 <ul className="navlist">
                     <li>

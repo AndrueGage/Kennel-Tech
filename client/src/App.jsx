@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import ClientNav from './components/Nav';
+import ClientNav from './components/ClientNav';
 
 function App() {
 
