@@ -23,8 +23,6 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true,
-        bcrypt: true,
-        rounds: 10,
     },
     phone: {
         type: String,
@@ -69,7 +67,14 @@ userSchema
         this.set({ first, last });
 });
 
-userSchema.plugin(require('mongoose-bcrypt'));
+userSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcyrpt.hash(this.password, saltRounds);
+    }
+
+    next();
+});
 
 const User = model('user', userSchema);
 
