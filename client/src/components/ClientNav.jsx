@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export default function Nav() {
+export default function ClientNav() {
     return (
         <header>
         <div className="navbar">
