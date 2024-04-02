@@ -1,5 +1,5 @@
-const User = require('./userSchema');
-const Dog = require('./dogSchema');
-const Reservation = require('./reservationSchema');
+const User = require('./User');
+const Dog = require('./Dog');
+const Reservation = require('./Reservation');
 
 module.exports = { User, Dog, Reservation };
