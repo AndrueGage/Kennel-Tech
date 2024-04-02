@@ -8,22 +8,22 @@ export default function Nav() {
             <nav>
                 <ul className="navlist">
                     <li>
-                        <Link to="/" className="animate">Home</Link>
+                        <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="account" className="animate">My Account</Link>
+                        <Link to="account">My Account</Link>
                     </li>
                     <li>
-                        <Link to="calendar" className="animate">Calendar</Link>
+                        <Link to="calendar">Calendar</Link>
                     </li>
                     <li>
-                        <Link to="reservations" className="animate">My Reservations</Link>
+                        <Link to="reservations">My Reservations</Link>
                     </li>
                     <li>
-                        <Link to="doginfo" className="animate">My Dogs</Link>
+                        <Link to="doginfo">My Dogs</Link>
                     </li>
                     <li>
-                        <Link to="contact" className="animate">Contact</Link>
+                        <Link to="contact">Contact</Link>
                     </li>
                 </ul>
             </nav>
