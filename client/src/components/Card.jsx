@@ -1,4 +1,4 @@
-function Card() {
+export default function Card() {
     return (
         <div className="card">
             <h2>Services Price Guide</h2>
@@ -8,5 +8,3 @@ function Card() {
         </div>
     )
 }
-
-export default Card
