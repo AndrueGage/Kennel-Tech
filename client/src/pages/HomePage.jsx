@@ -11,7 +11,6 @@ export default function HomePage() {
         <div>
             <Card />
             {dogs.length ? <DogContainer dogData={dogs}/> : <p>Add your dog!</p>}
-            <p>HomePage</p>
         </div>
     )
 }

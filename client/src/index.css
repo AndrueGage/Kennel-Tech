@@ -10,6 +10,7 @@
 * {
   background-color: var(--off-white);
   font-family: 'Montserrat', sans-serif;
+  margin: 10px;
 }
 
 .kenneltech {
@@ -22,6 +23,7 @@
     display: flex;
     align-items: center;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     border: 5px solid var(--battleship-grey);
     border-radius: 10px;
@@ -30,8 +32,10 @@
     margin-left: auto;
     margin-right: auto;
 }
+
 .navlist {
     display: flex;
+    flex-wrap: wrap;
     list-style-type: none;
     flex-direction: row;
     padding: 0;
@@ -39,9 +43,8 @@
 }
 
 .navlist li a {
-    padding: 10px 40px;
+    padding: 10px;
     border: 2px solid var(--battleship-grey);
-    margin: 0 5px;
     text-decoration: none;
     color: var(--battleship-grey);
     font-weight: 600;
@@ -49,11 +52,6 @@
     word-break: keep-all;
     width: 75px;
     text-align: center;
-   
-}
-
-.navlist li {
-    display: contents;
 }
 
 .card{
@@ -76,4 +74,11 @@
 }
 .card h3 {
     margin: 10px 0; 
+}
+
+.container {
+    border-radius: 8px;
+    border-color: black;
+    border-style: solid;
+    background-color: var(--battleship-grey);
 }
