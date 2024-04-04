@@ -8,10 +8,11 @@ export default function HomePage() {
         { dog_name: "Charlie", age: 2, breed: "Poodle", photo: "https://media-be.chewy.com/wp-content/uploads/2022/09/27101923/cute-dogs-pomeranian.jpg" },
       ];
     return (
-        <div>
-            <Card />
+        <div className="home-container">
+            <div className="dog-cards">
             {dogs.length ? <DogContainer dogData={dogs}/> : <p>Add your dog!</p>}
-            <p>HomePage</p>
-        </div>
+            </div>
+            <Card />
+            </div>
     )
 }
