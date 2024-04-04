@@ -18,9 +18,9 @@ const reservationSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'dogs',
         },
-    ],
+    ]
 });
 
 const Reservation = model('reservation', reservationSchema);
 
-model.exports = Reservation;
+module.exports = Reservation;

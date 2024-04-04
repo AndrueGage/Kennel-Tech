@@ -4,10 +4,27 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 const multer = require('multer');
 const storage = require('multer-gridfs-storage');
-const url = require('mongodb://yourhost:27017/database')
+const url = require('mongodb://localhost:27017/database')
 
 const { typeDefs, resolvers } = require('./schemas');
 const db =  require('./config/connection');
+
+const storage = new GridFsStorage({ url }); // Create a storage object with a given configuration
+const upload = multer({ storage }); // Set multer storage engine to the newly created object
+
+// Upload your files as usual
+app.post('/profile', upload.single('avatar'), (req, res, next) => { 
+    /*....*/ 
+});
+
+app.post('/photos/upload', upload.array('photos', 12), (req, res, next) => {
+    /*....*/ 
+});
+
+app.post('/cool-profile', upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'gallery', maxCount: 8 }]), (req, res, next) => {
+    /*....*/ 
+});
+
 
 const PORT = process.env.PORT || 5173;
 const app = express();
