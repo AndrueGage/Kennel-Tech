@@ -31,7 +31,7 @@ const userSchema = new Schema({
     dogs: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'dogs',
+            ref: 'dog',
         },
     ],
     vetOffice: {
