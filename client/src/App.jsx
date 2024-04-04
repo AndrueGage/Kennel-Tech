@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import Nav from './components/Nav';
+import ClientNav from './components/ClientNav';
 
 function App() {
 
   return (
     <>
-        <Nav />
+        <ClientNav />
         <main>
           <Outlet />
         </main>
