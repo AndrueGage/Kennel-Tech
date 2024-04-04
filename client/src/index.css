@@ -59,6 +59,16 @@
     margin: 13px;
 }
 
+.navlist li a:hover {
+    background-color: var(--battleship-grey);
+    color: white;
+}
+
+.navlist li a:active {
+    background-color: white;
+    color: var(--battleship-grey);
+}
+
 .card {
     border: 5px solid var(--tea-green);
     border-radius: 10px;
