@@ -27,8 +27,6 @@ const userSchema = new Schema({
     phone: {
         type: String,
         required: true,
-        bcrypt: true,
-        rounds: 10,
     },
     dogs: [
         {
