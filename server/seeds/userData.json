@@ -3,9 +3,11 @@
         "email": "demo4@gmail.com",
         "firstName": "Andrue",
         "lastName": "Desmarais",
-        
-        "password":"$2b$10$blqELi9QsLSUzY/jn9vfEO.ZybqhSoRmC3Y0reUcwfDEI/2SdoUMy",
+        "password":"12345678",
         "phone":"8653078498",
-        "dogs": ""
+        "vetOffice": "test office",
+        "emergencyContact":"12647382",
+        "address":"Test address",
+        "user_id": "1"
     }
 ]

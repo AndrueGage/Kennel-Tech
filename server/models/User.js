@@ -46,6 +46,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    user_id: {
+        type: String,
+        required: true
+    },
     reservations: [
         {
             type: Schema.Types.ObjectId,
