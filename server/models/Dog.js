@@ -5,12 +5,18 @@ const dogSchema = new Schema({
         type: String,
         required: true,
     },
-    dog_images: {
-        //multer stuff
-    },
-    vaccine_images: {
-        //multer stuff
-    },
+    dog_images: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'dogimages'
+        }
+    ],      
+    vaccine_images: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'vaccineimages'
+        }
+    ],
     name: {
         type: String,
         required: true,
