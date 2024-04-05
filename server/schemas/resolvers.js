@@ -1,4 +1,4 @@
-const { User, Dog, Reservation } =  require('../models');
+const { User, Dog, Reservation, Admin } =  require('../models');
 
 const resolvers = {
     Query: {
@@ -10,6 +10,9 @@ const resolvers = {
         },
         reservation: async () => {
             return Reservation.find({});
+        },
+        admin: async () => {
+            return Admin.find({});
         },
     },
     Mutation: {

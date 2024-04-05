@@ -1,10 +1,11 @@
 [
     {
-        "first_name": "Andrue",
-        "last_name": "Desmarais",
         "email": "demo4@gmail.com",
+        "firstName": "Andrue",
+        "lastName": "Desmarais",
+        
         "password":"$2b$10$blqELi9QsLSUzY/jn9vfEO.ZybqhSoRmC3Y0reUcwfDEI/2SdoUMy",
         "phone":"8653078498",
-        "role": "user"
+        "dogs": ""
     }
 ]

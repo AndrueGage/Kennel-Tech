@@ -16,7 +16,7 @@ const reservationSchema = new Schema({
     dog: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'dogs',
+            ref: 'dog',
         },
     ],
 });
