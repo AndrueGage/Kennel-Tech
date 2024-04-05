@@ -31,9 +31,17 @@ const typeDefs = `
         reservationType: String!
         reservationDate_Time: String!
         status: String!
-        dog: [dogs]
+        dog: [dog]
     }
     
+    type Admin {
+        _id: ID!
+        email: String!
+        password: String!
+        users: [user]
+        dogs: [dog]
+        reservations: [reservation]
+    }
 `;
 
 module.exports = typeDefs;
