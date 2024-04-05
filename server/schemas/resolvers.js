@@ -1,4 +1,4 @@
-const { User, Dog, Reservation, Admin } =  require('../models');
+const { User, Dog, Reservation, Admin, DogImages, VaccineImages } =  require('../models');
 
 const resolvers = {
     Query: {
