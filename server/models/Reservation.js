@@ -1,6 +1,7 @@
-const { Schema, model } = require('mongoose');
+import mongoose from 'mongoose';
+import Dog from './Dog.js';
 
-const reservationSchema = new Schema({
+const reservationSchema = new mongoose.Schema({
     reservationType: {
         type: String,
         required: true,
@@ -13,14 +14,14 @@ const reservationSchema = new Schema({
         type: String,
         required: true,
     },
-    dog: [
+    dogs: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'dogs',
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: Dog, // referencing Dog model
         },
-    ]
+    ],
 });
 
-const Reservation = model('reservation', reservationSchema);
+const Reservation = mongoose.model('Reservation', reservationSchema);
 
-module.exports = Reservation;
+export default Reservation;

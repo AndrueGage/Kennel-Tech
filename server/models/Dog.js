@@ -1,16 +1,7 @@
-const { Schema, model } = require('mongoose');
+import mongoose from 'mongoose';
+import User from './User.js';
 
-const dogSchema = new Schema({
-    email: {
-        type: String,
-        required: true,
-    },
-    dog_images: {
-        //multer stuff
-    },
-    vaccine_images: {
-        //multer stuff
-    },
+const dogSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -18,6 +9,9 @@ const dogSchema = new Schema({
     breed: {
         type: String,
         required: true,
+    },
+    sex: {
+        type: String,
     },
     age: {
         type: String,
@@ -31,12 +25,25 @@ const dogSchema = new Schema({
         type: String,
         required: true,
     },
+    image: {
+        type: String,
+    },
     vaccine: {
         type: String,
+    },
+    owner: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User', // referencing User model
         required: true,
     },
-})
+    reservations: [
+        {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'Reservation', // referencing Reservation model
+        },
+    ],
+});
 
-const Dog = model('dog', dogSchema);
+const Dog = mongoose.model('Dog', dogSchema);
 
-module.exports = Dog;
+export default Dog;
