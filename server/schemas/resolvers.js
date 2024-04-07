@@ -1,31 +1,54 @@
-const { User, Dog, Reservation, Admin } =  require('../models');
+import { User, Admin, Dog, Reservation } from '../models/index.js';
 
 const resolvers = {
     Query: {
-        user: async () => {
-            return User.find({});
+        greetings: () => "GraphQL is Awesome",
+        // This returns one user and all of their dogs and reservations
+        getUserById: async (_, { id }) => {
+            try {
+                const user = await User.findById(id)
+                .populate('dogs')
+                return user;
+            } catch (error) {
+                console.error("Error fetching user by ID:", error);
+                throw new Error("Failed to fetch user by ID");
+            }
         },
-        dog: async () => {
-            return Dog.find({});
+        getAllUsers: async () => {
+            return User.find({}).populate('dogs');
         },
-        reservation: async () => {
+        getDogById: async (_, { id }) => {
+            try {
+                const dog = await Dog.findById(id)
+                .populate('owner')
+                .populate('reservations');
+                return dog;
+            } catch (error) {
+                console.error("Error fetching dog by ID:", error);
+                throw new Error("Failed to fetch dog by ID");
+            }
+        },
+        getAllDogs: async () => {
+            return Dog.find({}).populate('owner');
+        },
+        getAllReservations: async () => {
             return Reservation.find({});
         },
-        admin: async () => {
+        getAllAdmins: async () => {
             return Admin.find({});
         },
     },
     Mutation: {
-        updateUser: {
-            //
-        },
-        updateDog: {
-            //
-        },
-        updateReservation: {
-            //
-        },
-    },
+        deleteDogById: async (_, {id}) => {
+            try {
+                const dog = await Dog.findByIdAndRemove(id);
+                return dog;
+            } catch (error) {
+                console.error("Error deleting dog:", error);
+                throw new Error("Error deleting dog");
+            }
+        }
+    }
 };
 
-module.exports = resolvers;
+export default resolvers;
