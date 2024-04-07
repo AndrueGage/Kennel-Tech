@@ -1,7 +1,18 @@
-const { connect, connection } = require('mongoose');
+import mongoose from 'mongoose';
 
-const connectionString = 'mongodb://127.0.0.1:27017/kenneltech';
+const MONGODB_URI = 'mongodb://localhost:27017/kenneltech';
 
-connect(connectionString);
+async function connectToDatabase() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    return mongoose.connection.db;
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    throw error;
+  }
+}
 
-module.exports = connection;
+export { connectToDatabase };

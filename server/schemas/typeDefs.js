@@ -1,47 +1,66 @@
 const typeDefs = `
-    type User {
-        _id: ID!
-        email: String!
-        firstName: String!
-        lastName: String!
-        password: String!
-        phone: String!
-        dog: [dogs]
-        vetOffice: String!
-        emergencyContact: String!
-        address: String!
-        reservations: [reservation]
-    }
 
-    type Dog {
-        _id: ID!
-        email: String!
-        dog_images: 
-        vaccine_images:
-        name: String!
-        breed: String!
-        age: String!
-        weight: String!
-        vet: String!
-        vaccine: String!
-    }
+type Query {
+    greetings: String
+    getUserById(id: ID!): User
+    getDogById(id: ID!): Dog
+    getAllUsers: [User]
+    getAllDogs: [Dog]
+    getAllReservations: [Reservation]
+    getAllAdmins: [Admin]
+    login(email: String!, password: String!): AuthPayLoad
+}
 
-    type Reservation {
-        _id: ID!
-        reservationType: String!
-        reservationDate_Time: String!
-        status: String!
-        dog: [dog]
-    }
-    
-    type Admin {
-        _id: ID!
-        email: String!
-        password: String!
-        users: [user]
-        dogs: [dog]
-        reservations: [reservation]
-    }
+type Mutation {
+    deleteDogById(id: ID!): Dog
+}
+
+type AuthPayLoad {
+    user: User
+    token: String!
+  }
+
+type User {
+    _id: ID!
+    email: String!
+    firstName: String!
+    lastName: String!
+    phone: String!
+    dogs: [Dog]
+    vetOffice: String!
+    emergencyContact: String!
+    address: String!
+}
+
+type Dog {
+    _id: ID!
+    name: String!
+    breed: String!
+    age: String!
+    sex: String!
+    weight: String!
+    vet: String!
+    vaccine: String!
+    image: String!
+    owner: User
+    reservations: [Reservation]
+}
+
+type Reservation {
+    _id: ID!
+    reservationType: String!
+    reservationDate_Time: String!
+    status: String!
+    dog: [Dog]
+}
+
+type Admin {
+    _id: ID!
+    email: String!
+    users: [User]
+    dogs: [Dog]
+    reservations: [Reservation]
+}
 `;
 
-module.exports = typeDefs;
+export default typeDefs;
