@@ -1,6 +1,7 @@
-const { Schema, model } = require('mongoose');
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -8,9 +9,9 @@ const userSchema = new Schema({
             validator: function(v) {
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
             },
-            message: props => `${props.value} is not valid email address!`
+            message: props => `${props.value} is not a valid email address!`
         },
-        unique: [true, 'User email address is required'],
+        unique: true,
     },
     firstName: {
         type: String,
@@ -30,8 +31,8 @@ const userSchema = new Schema({
     },
     dogs: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'dog',
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'Dog', // referencing Dog model
         },
     ],
     vetOffice: {
@@ -46,38 +47,21 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    user_id: {
-        type: String,
-        required: true
-    },
-    reservations: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'reservation',
-        },
-    ],
 });
 
-userSchema
-    .virtual('fullName')
-    .get(function () {
-        return `${this.first} ${this.last}`;
-    })
-    .set(function (v) {
-        const first = v.split(' ')[0];
-        const last = v.split(' ')[1];
-        this.set({ first, last });
+userSchema.virtual('fullName').get(function () {
+    return `${this.firstName} ${this.lastName}`;
 });
 
 userSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
-        this.password = await bcyrpt.hash(this.password, saltRounds);
+        this.password = await bcrypt.hash(this.password, saltRounds);
     }
 
     next();
 });
 
-const User = model('user', userSchema);
+const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+export default User;
