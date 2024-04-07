@@ -2,13 +2,19 @@ import { jwtDecode } from "jwt-decode";
 
 class AuthService {
   getUser() {
-    return decode(this.getToken());
+    return jwtDecode(this.getToken());
   }
 
   loggedIn() {
     const token = this.getToken();
-    return token && !this.isTokenExpired(token) ? true : false;
-  }
+    if(token && !this.isTokenExpired(token)) {
+        return true;
+    } else {
+        // Redirect the user to the login page
+        window.location.href = '/login'; // Change '/login' to your actual login page URL
+        return false;
+    }
+}
 
   isTokenExpired(token) {
     const decoded = jwtDecode(token);

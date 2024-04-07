@@ -1,18 +1,27 @@
+import { useQuery } from '@apollo/client';
 import Card from '../components/Card'
 import DogContainer from '../components/DogContainer';
+import auth from '../utils/auth';
+import { QUERY_USER } from '../utils/queries';
 
 export default function HomePage() {
-    const dogs = [
-        { dog_name: "Max", age: 5, breed: "Golden Retriever", photo: "https://media-be.chewy.com/wp-content/uploads/2022/09/27095535/cute-dogs-pembroke-welsh-corgi.jpg" },
-        { dog_name: "Bella", age: 3, breed: "Labrador Retriever", photo: "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1xw:0.74975xh;center,top&resize=1200:*" },
-        { dog_name: "Charlie", age: 2, breed: "Poodle", photo: "https://media-be.chewy.com/wp-content/uploads/2022/09/27101923/cute-dogs-pomeranian.jpg" },
-      ];
-    return (
-        <div className="home-container">
-            <div className="dog-cards">
-            {dogs.length ? <DogContainer dogData={dogs}/> : <p>Add your dog!</p>}
-            </div>
-            <Card />
-            </div>
-    )
+
+    const loggedIn = auth.loggedIn();
+    if (loggedIn) {
+        const user = auth.getUser();
+        if (user) {
+            const { loading, data } = useQuery(QUERY_USER, { variables: { id: user.data._id } });
+            if (data) {
+                return (
+                    <div className="border-2 rounded-xl ">
+                        <div className="dog-cards">
+                            {data.getUserById.dogs.length ? <DogContainer dogData={data.getUserById.dogs} /> : <p>Add your dog!</p>}
+                        </div>
+                        <Card />
+                    </div>
+                )
+            }
+        }
+
+    }
 }

@@ -10,3 +10,24 @@ query Login($email: String!, $password: String!) {
     }
   }
 `
+export const QUERY_USER = gql`
+query GetUserById($id: ID!) {
+  getUserById(id: $id) {
+    _id
+    address
+    email
+    emergencyContact
+    firstName
+    dogs {
+      _id
+      age
+      breed
+      name
+      image
+    }
+    lastName
+    phone
+    vetOffice
+  }
+}
+`
