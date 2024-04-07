@@ -47,7 +47,23 @@ const resolvers = {
                 console.error("Error deleting dog:", error);
                 throw new Error("Error deleting dog");
             }
-        }
+        },
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+      
+            if (!user) {
+              throw AuthenticationError;
+            }
+      
+            const correctPw = await User.isCorrectPassword(password);
+      
+            if (!correctPw) {
+              throw AuthenticationError;
+            }
+      
+            const token = signToken(user);
+            return { token, user };
+          },
     }
 };
 

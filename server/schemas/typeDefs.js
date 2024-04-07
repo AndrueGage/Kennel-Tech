@@ -12,6 +12,7 @@ type Query {
 
 type Mutation {
     deleteDogById(id: ID!): Dog
+    
 }
 
 type User {
@@ -24,7 +25,6 @@ type User {
     vetOffice: String!
     emergencyContact: String!
     address: String!
-    reservations: [Reservation]
 }
 
 type Dog {
