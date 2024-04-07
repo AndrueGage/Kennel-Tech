@@ -1,16 +1,18 @@
-const models = require('../models');
-const db = require('../config/connection');
+import { connectToDatabase as db } from '../config/connection.js';
 
-module.exports = async (modelName, collectionName) => {
+const cleanDB = async (collectionName) => {
+  const connection = await db();
+  console.log(collectionName)
   try {
-    let modelExists = await models[modelName].db.db.listCollections({
-      name: collectionName
-    }).toArray()
-
-    if (modelExists.length) {
-      await db.dropCollection(collectionName);
+    
+      const collectionExists = await connection.listCollections({ name: collectionName }).toArray();
+      if (collectionExists.length) {
+        await connection.dropCollection(collectionName);
+      }
     }
-  } catch (err) {
-    throw err;
+  catch (err) {
+    throw new Error(`Collection ${collectionName} does not exist.`);
   }
-}
+};
+
+export default cleanDB;
