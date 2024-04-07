@@ -38,6 +38,18 @@ const resolvers = {
         getAllAdmins: async () => {
             return Admin.find({});
         },
+        
+    },
+    Mutation: {
+        deleteDogById: async (_, {id}) => {
+            try {
+                const dog = await Dog.findByIdAndRemove(id);
+                return dog;
+            } catch (error) {
+                console.error("Error deleting dog:", error);
+                throw new Error("Error deleting dog");
+            }
+        },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
       
@@ -54,17 +66,6 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
           },
-    },
-    Mutation: {
-        deleteDogById: async (_, {id}) => {
-            try {
-                const dog = await Dog.findByIdAndRemove(id);
-                return dog;
-            } catch (error) {
-                console.error("Error deleting dog:", error);
-                throw new Error("Error deleting dog");
-            }
-        },
        
     }
 };

@@ -1,39 +1,28 @@
 import React, { useState } from 'react'
-import { useQuery } from '@apollo/client'
-import { QUERY_LOGIN } from '../utils/queries';
+import { useMutation } from '@apollo/client'
+import { MUTATION_LOGIN } from '../utils/mutations';
+import auth from '../utils/auth';
 export default function LoginPage() {
 
+    const [login, { loading, error }] = useMutation(MUTATION_LOGIN)
 
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-        console.log(formData);
-    };
-
-    const handleSubmit =  (e) => {
-        e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.target)
         try {
-            const { data } =  useQuery(QUERY_LOGIN, {
-                variables: { email: formData.email, password: formData.password }
-            });
-            console.log('Form submitted:', data);
-        } catch(err) {
-            console.error('doesnt work', err)
+            const { data } = await login({ variables: { email: formData.get('email'), password: formData.get('password') } })
+            console.log(data.login);
+            auth.login(data.login.token)
+        } catch (e) {
+            console.error(e);
         }
-       
-        
-        
-        // You can add code here to send the form data to the server or perform other actions
     };
-
+    if (loading) {
+        return (<p>loading...</p>)
+    }
+    if (error) {
+        return (<pre>{JSON.stringify(error, null, 3)}</pre>)
+    }
     return (
         <form onSubmit={handleSubmit}>
             <label>
@@ -41,8 +30,6 @@ export default function LoginPage() {
                 <input
                     type="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                 />
             </label>
             <br />
@@ -51,8 +38,6 @@ export default function LoginPage() {
                 <input
                     type="password"
                     name="password"
-                    value={formData.password}
-                    onChange={handleChange}
                 />
             </label>
             <br />
