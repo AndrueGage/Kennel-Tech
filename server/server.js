@@ -1,20 +1,26 @@
+import express from 'express';
 import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone'
-import { typeDefs, resolvers } from './schemas/index.js'
-
+import { expressMiddleware } from '@apollo/server/express4';
+import { typeDefs, resolvers } from './schemas/index.js';
 import { connectToDatabase } from './config/connection.js';
+
+const app = express();
+const port = 4000;
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
 
-const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
+await server.start();
+
+app.use('/graphql', express.json(), expressMiddleware(server, {
   context: async () => {
     const db = await connectToDatabase();
     return { db };
   },
-});
+}));
 
-console.log(`🚀  Server ready at: ${url}`);
+app.listen(port, () => {
+  console.log(`🚀 Server ready at http://localhost:${port}/graphql`);
+});

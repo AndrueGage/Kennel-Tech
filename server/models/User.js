@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         validate: {
-            validator: function(v) {
+            validator: function (v) {
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
             },
             message: props => `${props.value} is not a valid email address!`
@@ -59,9 +59,13 @@ userSchema.pre('save', async function (next) {
         this.password = await bcrypt.hash(this.password, saltRounds);
     }
 
+
     next();
 });
 
+userSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password);
+};
 const User = mongoose.model('User', userSchema);
 
 export default User;

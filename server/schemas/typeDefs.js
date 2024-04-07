@@ -8,12 +8,17 @@ type Query {
     getAllDogs: [Dog]
     getAllReservations: [Reservation]
     getAllAdmins: [Admin]
+    login(email: String!, password: String!): AuthPayLoad
 }
 
 type Mutation {
     deleteDogById(id: ID!): Dog
-    
 }
+
+type AuthPayLoad {
+    user: User
+    token: String!
+  }
 
 type User {
     _id: ID!

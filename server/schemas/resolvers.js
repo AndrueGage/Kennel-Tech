@@ -1,4 +1,5 @@
 import { User, Admin, Dog, Reservation } from '../models/index.js';
+import { signToken } from '../utils/utils.js';
 
 const resolvers = {
     Query: {
@@ -37,6 +38,22 @@ const resolvers = {
         getAllAdmins: async () => {
             return Admin.find({});
         },
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+      
+            if (!user) {
+              throw AuthenticationError;
+            }
+            
+            const correctPw = await user.isCorrectPassword(password);
+      
+            if (!correctPw) {
+              throw AuthenticationError;
+            }
+            
+            const token = signToken(user);
+            return { token, user };
+          },
     },
     Mutation: {
         deleteDogById: async (_, {id}) => {
@@ -48,22 +65,7 @@ const resolvers = {
                 throw new Error("Error deleting dog");
             }
         },
-        login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
-      
-            if (!user) {
-              throw AuthenticationError;
-            }
-      
-            const correctPw = await User.isCorrectPassword(password);
-      
-            if (!correctPw) {
-              throw AuthenticationError;
-            }
-      
-            const token = signToken(user);
-            return { token, user };
-          },
+       
     }
 };
 

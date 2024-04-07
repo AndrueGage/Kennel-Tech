@@ -14,11 +14,14 @@ async function seed() {
     console.log('Generating Users...');
     const users = [];
     for (let i = 0; i < 5; i++) {
+        const password = faker.internet.password()
+        const email = faker.internet.email()
+        console.log(email, password);
         const user = new User({
-            email: faker.internet.email(),
+            email: email,
             firstName: faker.person.firstName(),
             lastName: faker.person.lastName(),
-            password: faker.internet.password(),
+            password: password,
             phone: faker.phone.number(),
             vetOffice: faker.company.name(),
             emergencyContact: faker.phone.number(),
