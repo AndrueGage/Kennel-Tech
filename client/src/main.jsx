@@ -26,16 +26,8 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'reservations',
-        element: <ReservationsPage />,
-      },
-      {
         path: 'account',
         element: <AccountPage />,
-      },
-      {
-        path: 'calendar',
-        element: <CalendarPage />,
       },
       {
         path: 'doginfo',
@@ -44,6 +36,16 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: <ContactPage />,
+      },
+      {
+        path: 'reservations',
+        element: <ReservationsPage />,
+        children: [
+          {
+            path: 'calendar',
+            element: <CalendarPage />,
+          }
+        ]
       },
     ],
   },
