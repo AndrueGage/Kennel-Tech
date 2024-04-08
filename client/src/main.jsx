@@ -40,12 +40,10 @@ const router = createBrowserRouter([
       {
         path: 'reservations',
         element: <ReservationsPage />,
-        children: [
-          {
-            path: 'calendar',
-            element: <CalendarPage />,
-          }
-        ]
+      },
+      {
+        path: 'reservations/calendar',
+        element: <CalendarPage />,
       },
     ],
   },
