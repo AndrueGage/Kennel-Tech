@@ -10,6 +10,7 @@ import AccountPage from './pages/AccountPage';
 import CalendarPage from './pages/CalendarPage';
 import DogInfoPage from './pages/DogInfoPage';
 import ContactPage from './pages/ContactPage';
+import SignUpPage from './pages/SignUpPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginPage />,
+      },
+      {
+        path: 'signup',
+        element: <SignUpPage />,
       },
       {
         index: true,

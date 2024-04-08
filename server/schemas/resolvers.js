@@ -8,7 +8,7 @@ const resolvers = {
         getUserById: async (_, { id }) => {
             try {
                 const user = await User.findById(id)
-                .populate('dogs')
+                    .populate('dogs')
                 return user;
             } catch (error) {
                 console.error("Error fetching user by ID:", error);
@@ -18,12 +18,12 @@ const resolvers = {
         getUsersDogReservations: async (_, { id }) => {
             try {
                 const user = await User.findById(id)
-                .populate({
-                    path: 'dogs',
-                    populate: {
-                        path: 'reservations'
-                    }
-                })
+                    .populate({
+                        path: 'dogs',
+                        populate: {
+                            path: 'reservations'
+                        }
+                    })
                 return user;
             } catch (error) {
                 console.error("Error fetching user by ID:", error);
@@ -36,8 +36,8 @@ const resolvers = {
         getDogById: async (_, { id }) => {
             try {
                 const dog = await Dog.findById(id)
-                .populate('owner')
-                .populate('reservations');
+                    .populate('owner')
+                    .populate('reservations');
                 return dog;
             } catch (error) {
                 console.error("Error fetching dog by ID:", error);
@@ -54,10 +54,10 @@ const resolvers = {
         getAllAdmins: async () => {
             return Admin.find({});
         }
-        
+
     },
     Mutation: {
-        deleteDogById: async (_, {id}) => {
+        deleteDogById: async (_, { id }) => {
             try {
                 const dog = await Dog.findByIdAndRemove(id);
                 return dog;
@@ -68,21 +68,40 @@ const resolvers = {
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
-      
+
             if (!user) {
-              throw AuthenticationError;
+                throw AuthenticationError;
             }
-            
+
             const correctPw = await user.isCorrectPassword(password);
-      
+
             if (!correctPw) {
-              throw AuthenticationError;
+                throw AuthenticationError;
             }
-            
+
             const token = signToken(user);
             return { token, user };
-          },
-       
+        },
+        signup: async (parent, { email, password, firstName, lastName }) => {
+            const user = new User({
+                email: email,
+                password: password,
+                firstName: firstName,
+                lastName: lastName,
+            });
+
+            if (!user) {
+                throw AuthenticationError;
+            }
+
+            if (user) {
+                await user.save();
+            }
+
+            const token = signToken(user);
+            return { token, user };
+        },
+
     }
 };
 

@@ -17,7 +17,7 @@ export default function ClientNav() {
                         <Link to="/reservations">My Reservations</Link>
                     </li>
                     <li>
-                        <Link to="/doginfo">My Dogs</Link>
+                        <Link to="/doginfo">Dog Info</Link>
                     </li>
                     <li>
                         <Link to="/contact">Contact</Link>

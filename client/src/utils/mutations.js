@@ -10,3 +10,17 @@ mutation Login($email: String!, $password: String!) {
     }
   }
 `
+
+export const MUTATION_SIGNUP = gql`
+mutation Mutation($email: String!, $password: String!, $firstName: String!, $lastName: String!) {
+  signup(email: $email, password: $password, firstName: $firstName, lastName: $lastName) {
+    token
+    user {
+      _id
+      email
+      firstName
+      lastName
+    }
+  }
+}
+`
