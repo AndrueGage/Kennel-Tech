@@ -14,12 +14,10 @@ const reservationSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    dogs: [
-        {
-            type: mongoose.SchemaTypes.ObjectId,
-            ref: Dog, // referencing Dog model
-        },
-    ],
+    dogs: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: Dog, // referencing Dog model
+    },
 });
 
 const Reservation = mongoose.model('Reservation', reservationSchema);

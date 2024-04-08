@@ -3,16 +3,18 @@ const typeDefs = `
 type Query {
     greetings: String
     getUserById(id: ID!): User
+    getUsersDogReservations(id: ID!): User
     getDogById(id: ID!): Dog
     getAllUsers: [User]
     getAllDogs: [Dog]
     getAllReservations: [Reservation]
     getAllAdmins: [Admin]
-    login(email: String!, password: String!): AuthPayLoad
 }
 
 type Mutation {
     deleteDogById(id: ID!): Dog
+    login(email: String!, password: String!): AuthPayLoad
+    signup(email: String!, password: String!, firstName: String!, lastName: String!): AuthPayLoad
 }
 
 type AuthPayLoad {
@@ -25,11 +27,11 @@ type User {
     email: String!
     firstName: String!
     lastName: String!
-    phone: String!
+    phone: String
     dogs: [Dog]
-    vetOffice: String!
-    emergencyContact: String!
-    address: String!
+    vetOffice: String
+    emergencyContact: String
+    address: String
 }
 
 type Dog {

@@ -1,18 +1,39 @@
+import { useQuery } from '@apollo/client';
 import Card from '../components/Card'
 import DogContainer from '../components/DogContainer';
+import auth from '../utils/auth';
+import { QUERY_USER } from '../utils/queries';
+import ClientNav from '../components/ClientNav';
 
 export default function HomePage() {
-    const dogs = [
-        { dog_name: "Max", age: 5, breed: "Golden Retriever", photo: "https://media-be.chewy.com/wp-content/uploads/2022/09/27095535/cute-dogs-pembroke-welsh-corgi.jpg" },
-        { dog_name: "Bella", age: 3, breed: "Labrador Retriever", photo: "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1xw:0.74975xh;center,top&resize=1200:*" },
-        { dog_name: "Charlie", age: 2, breed: "Poodle", photo: "https://media-be.chewy.com/wp-content/uploads/2022/09/27101923/cute-dogs-pomeranian.jpg" },
-      ];
-    return (
-        <div className="home-container">
-            <div className="dog-cards">
-            {dogs.length ? <DogContainer dogData={dogs}/> : <p>Add your dog!</p>}
-            </div>
-            <Card />
-            </div>
-    )
+
+    const loggedIn = auth.loggedIn();
+    if (loggedIn) {
+        const user = auth.getUser();
+        if (user) {
+        const { loading, data, error } = useQuery(QUERY_USER, { variables: { id: user.data._id } });
+            if (data) {
+                let dogs = data.getUserById.dogs
+                return (
+                    <div className='max-w-[1400px] mx-auto flex flex-col gap-8 my-5'>
+                        <ClientNav />
+                        <div className="border-2 border-neutral-800 rounded-xl p-8 flex flex-row gap-3 justify-between">
+                            <div className="dog-cards">
+                                <DogContainer dogData={dogs} />
+                            </div>
+                            <Card />
+                        </div>
+                    </div>
+                )
+            }
+            if (loading) {
+                return <p>Loading</p>
+            }
+            if (error) {
+                return <p>Error, <pre>{JSON.stringify(error, null, 3)}</pre></p>
+            }
+        }
+    } else {
+        return <p>You are not logged in</p>
+    }
 }
