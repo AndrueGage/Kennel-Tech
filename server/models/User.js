@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true,
+        required: false,
     },
     dogs: [
         {
@@ -37,21 +37,21 @@ const userSchema = new mongoose.Schema({
     ],
     vetOffice: {
         type: String,
-        required: true,
+        required: false,
     },
     emergencyContact: {
         type: String,
-        required: true,
+        required: false,
     },
     address: {
         type: String,
-        required: true,
+        required: false,
     },
 });
 
-userSchema.virtual('fullName').get(function () {
-    return `${this.firstName} ${this.lastName}`;
-});
+// userSchema.virtual('fullName').get(function () {
+//     return `${this.firstName} ${this.lastName}`;
+// });
 
 userSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
