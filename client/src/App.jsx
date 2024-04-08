@@ -12,8 +12,8 @@ function App() {
   return (
     <>
      <ApolloProvider client={client}>
-        <ClientNav />
-        <main>
+        
+        <main className='max-w-[1400px] mx-auto flex flex-col gap-8 my-5'>
           <Outlet />
         </main>
         </ApolloProvider>
