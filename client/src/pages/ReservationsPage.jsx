@@ -87,14 +87,14 @@ export default function ReservationsPage() {
                 })
             })
             return (
-                <>
+                <div className='max-w-[1400px] mx-auto flex flex-col gap-8 my-5'>
                     <ClientNav />
                     <h1 className='font-bold text-xl'>Reservations</h1>
                     <Link to="calendar">Request Reservation</Link>
                     <Container>
                         <Table columns={columns} dataSource={newData} />
                     </Container>
-                </>
+                </div>
             )
         }
         if (loading) {

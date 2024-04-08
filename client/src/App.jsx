@@ -13,7 +13,7 @@ function App() {
     <>
      <ApolloProvider client={client}>
         
-        <main className='max-w-[1400px] mx-auto flex flex-col gap-8 my-5'>
+        <main>
           <Outlet />
         </main>
         </ApolloProvider>
