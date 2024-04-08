@@ -31,3 +31,18 @@ query GetUserById($id: ID!) {
   }
 }
 `
+export const QUERY_DOG_USER_RESERVATIONS = gql`
+query GetUsersDogReservations($id: ID!) {
+  getUsersDogReservations(id: $id) {
+    dogs {
+      name
+      reservations {
+        _id
+        reservationDate_Time
+        reservationType
+        status
+      }
+    }
+  }
+}
+`

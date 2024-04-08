@@ -3,6 +3,7 @@ const typeDefs = `
 type Query {
     greetings: String
     getUserById(id: ID!): User
+    getUsersDogReservations(id: ID!): User
     getDogById(id: ID!): Dog
     getAllUsers: [User]
     getAllDogs: [Dog]

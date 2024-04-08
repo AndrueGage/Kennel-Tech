@@ -15,6 +15,21 @@ const resolvers = {
                 throw new Error("Failed to fetch user by ID");
             }
         },
+        getUsersDogReservations: async (_, { id }) => {
+            try {
+                const user = await User.findById(id)
+                .populate({
+                    path: 'dogs',
+                    populate: {
+                        path: 'reservations'
+                    }
+                })
+                return user;
+            } catch (error) {
+                console.error("Error fetching user by ID:", error);
+                throw new Error("Failed to fetch user by ID");
+            }
+        },
         getAllUsers: async () => {
             return User.find({}).populate('dogs');
         },
@@ -32,12 +47,13 @@ const resolvers = {
         getAllDogs: async () => {
             return Dog.find({}).populate('owner');
         },
+        // Admin
         getAllReservations: async () => {
             return Reservation.find({});
         },
         getAllAdmins: async () => {
             return Admin.find({});
-        },
+        }
         
     },
     Mutation: {
