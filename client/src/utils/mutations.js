@@ -24,3 +24,16 @@ mutation Mutation($email: String!, $password: String!, $firstName: String!, $las
   }
 }
 `
+
+export const UPDATE_DOG_INFO = gql`
+mutation UpdateDogInfo($dogId: ID!, $name: String, $breed: String, $age: String, $sex: String, $weight: String, $vet: String) {
+  updateDogInfo(dogId: $dogId, name: $name, breed: $breed, age: $age, sex: $sex, weight: $weight, vet: $vet) {
+    age
+    breed
+    name
+    sex
+    vet
+    weight
+  }
+}
+`

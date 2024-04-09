@@ -46,3 +46,6 @@ query GetUsersDogReservations($id: ID!) {
   }
 }
 `
+export const QUERY_DOG_INFO = gql`
+
+`

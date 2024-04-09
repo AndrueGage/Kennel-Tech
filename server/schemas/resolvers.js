@@ -101,7 +101,22 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-
+        findDogById: async (_, { dogId }) => {
+            try {
+                const dog = await Dog.findById(dogId);
+                return dog;
+            } catch (error) {
+                throw new Error("Failed to find dog by ID");
+            }
+        },
+        updateDogInfo: async (_, { dogId, name, breed, age, sex, weight, vet, vaccine }) => {
+            try {
+                const dog = await Dog.findByIdAndUpdate(dogId, { name, breed, age, sex, weight, vet, vaccine }, { new: true });
+                return dog;
+            } catch (error) {
+                throw new Error("Failed to update dog information");
+            }
+        }
     }
 };
 
