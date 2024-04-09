@@ -48,8 +48,8 @@ query GetUsersDogReservations($id: ID!) {
 `
 
 export const QUERY_DOG_INFO = gql`
-query GetUsersDogReservations($id: ID!) {
-  getUsersDogReservations(id: $id) {
+query GetUsersDogInfo($id: ID!) {
+  getUsersDogInfo(id: $id) {
     dogs {
       image
       name
@@ -58,7 +58,6 @@ query GetUsersDogReservations($id: ID!) {
       age
       weight
       vet
-      vaccines
     }
   }
 }

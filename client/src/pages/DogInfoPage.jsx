@@ -8,21 +8,12 @@ import { QUERY_DOG_INFO } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import { UPDATE_DOG_INFO } from '../utils/mutations';
 
+            //    NEED LOGIC/QUERIES TO IMPORT USER DOG DATA AND MUTATIONS TO ADD DOG *************
+
 export default function DogInfoPage(){
     const user = auth.getUser();
-    if (user) {
-        const { loading, data, error } = useQuery(QUERY_DOG_INFO, { variables: { id: user.data._id } });
-        if (data) {
-            data.getUsersDogInfo.dogs.findAll(dog => {
-                let dogName = dog.name
-                dog.reservations.forEach(reservation => {
-                    const newReservation = { ...reservation, name: dogName }
-                    reservationsArr.push(newReservation)
-                })
-            })
-            const newData = []
 
-    const [addDog, { loading, error }] = useMutation(UPDATE_DOG_INFO)
+    const [addDog] = useMutation(UPDATE_DOG_INFO)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -44,12 +35,6 @@ export default function DogInfoPage(){
             console.error(e);
         }
     };
-    if (loading) {
-        return (<p>loading...</p>)
-    }
-    if (error) {
-        return (<pre>{JSON.stringify(error, null, 3)}</pre>)
-    }
     return (
         <div className='max-w-[1400px] mx-auto flex flex-col gap-8 my-5'>
         <ClientNav />
@@ -59,10 +44,8 @@ export default function DogInfoPage(){
             <hr />
             <div className='doginfo-page'>
                 <div className='doginfo-container'>
-                    {/* USING LOGO AS IMAGE PLACEHOLDER FOR TESTING */}
                     <img src={Logo} alt="Logo" className="rounded-full w-[210px] h-[210px] aspect-square bg-white m-10" />
                     <div className='dog-params'>
-                        {/* NEED TO ADD DOG DATA HERE */}[p;/ ]
                         <p className='text-2xl font-bold m-1'>Name: {}</p>
                         <p className='text-2xl font-bold m-1'>Breed: {}</p>
                         <p className='text-2xl font-bold m-1'>Sex: {}</p>
@@ -95,14 +78,4 @@ export default function DogInfoPage(){
         </Container>
         </div>
     )
-}
-if (loading) {
-    return <pre>Loading</pre>
-}
-if (error) {
-    return <pre>Error {JSON.stringify(error, null, 3)}</pre>
-}
-} else {
-return <pre>Error!</pre>
-}
 };
