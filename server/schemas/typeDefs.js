@@ -26,6 +26,14 @@ type Mutation {
         vet: String
         vaccine: String
     ): Dog
+    findUserById(userId: ID!): User
+    updateUserInfo(
+        userId: ID!
+        address: String!
+        email: String!
+        vetOffice: String!
+        emergencyContact: String!
+    ): User
 }
 
 type AuthPayLoad {

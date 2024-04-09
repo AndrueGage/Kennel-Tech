@@ -37,3 +37,14 @@ mutation UpdateDogInfo($dogId: ID!, $name: String, $breed: String, $age: String,
   }
 }
 `
+
+export const UPDATE_USER_INFO = gql`
+mutation UpdateUserInfo($userId: ID!, $address: String!, $email: String!, $vetOffice: String!, $emergencyContact: String!) {
+  updateUserInfo(userId: $userId, address: $address, email: $email, vetOffice: $vetOffice, emergencyContact: $emergencyContact) {
+    address
+    email
+    emergencyContact
+    vetOffice
+  }
+}
+`
