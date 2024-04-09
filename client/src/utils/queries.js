@@ -46,6 +46,19 @@ query GetUsersDogReservations($id: ID!) {
   }
 }
 `
-export const QUERY_DOG_INFO = gql`
 
+export const QUERY_DOG_INFO = gql`
+query GetUsersDogInfo($id: ID!) {
+  getUsersDogInfo(id: $id) {
+    dogs {
+      image
+      name
+      breed
+      sex
+      age
+      weight
+      vet
+    }
+  }
+}
 `

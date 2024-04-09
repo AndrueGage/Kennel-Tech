@@ -30,6 +30,8 @@
     justify-content: space-between;
     border: 5px solid var(--battleship-grey);
     border-radius: 10px;
+    max-width: 2000px;
+    margin-top: auto;
     max-width: 1400px;
     margin-top: 20px auto;
     margin-left: auto;
@@ -83,9 +85,28 @@
 }
 
 
-/* .dog-cards {
+ /* .dog-cards {
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: left;
 } */
+
+.doginfo-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.doginfo-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dog-params {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+}
