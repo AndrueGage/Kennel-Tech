@@ -37,6 +37,12 @@ const router = createBrowserRouter([
       {
         path: 'doginfo',
         element: <DogInfoPage />,
+        children: [
+          {
+            path: ':id',
+            element: <DogInfoPage />
+          }
+        ],
       },
       {
         path: 'contact',

@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import ClientNav from './components/ClientNav';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { AuthProvider } from '../src/utils/AuthContext';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -11,12 +11,13 @@ function App() {
 
   return (
     <>
-     <ApolloProvider client={client}>
-        
-        <main>
-          <Outlet />
+      <ApolloProvider client={client}>
+        <main className="px-3">
+          <AuthProvider>
+            <Outlet />
+          </AuthProvider>
         </main>
-        </ApolloProvider>
+      </ApolloProvider>
     </>
   )
 }
