@@ -38,9 +38,9 @@ export default function DogInfoPage(){
     return (
         <div className='max-w-[1400px] mx-auto flex flex-col gap-8 my-5'>
         <ClientNav />
-        <h1 className='text-xl'><strong>Dog Information</strong></h1>
+        <h1 className='text-3xl'><strong>Dog Information</strong></h1>
         <Container>
-            <p className="text-xl"><strong>My Dogs:</strong></p>
+            <p className="text-2xl"><strong>My Dogs:</strong></p>
             <hr />
             <div className='doginfo-page'>
                 <div className='doginfo-container'>
