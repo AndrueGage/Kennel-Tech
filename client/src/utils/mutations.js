@@ -24,3 +24,21 @@ mutation Mutation($email: String!, $password: String!, $firstName: String!, $las
   }
 }
 `
+
+export const MUTATION_ADDDOG = gql`
+mutation Mutation($name: String!, $breed: String!, $sex: String!, $age: String!, $weight: String!, $vet: String!, $vaccines: String!) {
+  addDog(name: $name, breed: $breed, sex: $sex, age: $age, weight: $weight, vet: $vet, vaccines: $vaccines) {
+    token
+    dog {
+      _id
+      name
+      breed
+      sex
+      age
+      weight
+      vet
+      vaccines
+    }
+  }
+}
+`
