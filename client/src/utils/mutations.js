@@ -25,20 +25,15 @@ mutation Mutation($email: String!, $password: String!, $firstName: String!, $las
 }
 `
 
-export const MUTATION_ADDDOG = gql`
-mutation Mutation($name: String!, $breed: String!, $sex: String!, $age: String!, $weight: String!, $vet: String!, $vaccines: String!) {
-  addDog(name: $name, breed: $breed, sex: $sex, age: $age, weight: $weight, vet: $vet, vaccines: $vaccines) {
-    token
-    dog {
-      _id
-      name
-      breed
-      sex
-      age
-      weight
-      vet
-      vaccines
-    }
+export const UPDATE_DOG_INFO = gql`
+mutation UpdateDogInfo($dogId: ID!, $name: String, $breed: String, $age: String, $sex: String, $weight: String, $vet: String) {
+  updateDogInfo(dogId: $dogId, name: $name, breed: $breed, age: $age, sex: $sex, weight: $weight, vet: $vet) {
+    age
+    breed
+    name
+    sex
+    vet
+    weight
   }
 }
 `

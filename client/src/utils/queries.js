@@ -47,7 +47,7 @@ query GetUsersDogReservations($id: ID!) {
 }
 `
 
-export const QUERY_DOG_USER_INFO = gql`
+export const QUERY_DOG_INFO = gql`
 query GetUsersDogReservations($id: ID!) {
   getUsersDogReservations(id: $id) {
     dogs {

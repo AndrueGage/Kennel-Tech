@@ -4,14 +4,14 @@ import auth from '../utils/auth';
 import Container from '../components/Container';
 import ClientNav from '../components/ClientNav';
 import Logo from '../assets/kennel-logo.png';
-import { UPDATE_DOG_INFO } from '../utils/queries';
+import { QUERY_DOG_INFO } from '../utils/queries';
 import { useQuery } from '@apollo/client';
-import { MUTATION_ADDDOG } from '../utils/mutations';
+import { UPDATE_DOG_INFO } from '../utils/mutations';
 
 export default function DogInfoPage(){
     const user = auth.getUser();
     if (user) {
-        const { loading, data, error } = useQuery(UPDATE_DOG_INFO, { variables: { id: user.data._id } });
+        const { loading, data, error } = useQuery(QUERY_DOG_INFO, { variables: { id: user.data._id } });
         if (data) {
             data.getUsersDogInfo.dogs.findAll(dog => {
                 let dogName = dog.name
@@ -22,7 +22,7 @@ export default function DogInfoPage(){
             })
             const newData = []
 
-    const [addDog, { loading, error }] = useMutation(MUTATION_ADDDOG)
+    const [addDog, { loading, error }] = useMutation(UPDATE_DOG_INFO)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -35,8 +35,7 @@ export default function DogInfoPage(){
                     sex: formData.get('sex'),
                     age: formData.get('age'),
                     weight: formData.get('weight'),
-                    vet: formData.get('vet'),
-                    vaccines: formData.get('vaccines')
+                    vet: formData.get('vet')
                 } 
             });
             console.log(data.login);
@@ -70,7 +69,6 @@ export default function DogInfoPage(){
                         <p className='text-2xl font-bold m-1'>Age: {}</p>
                         <p className='text-2xl font-bold m-1'>Weight: {}</p>
                         <p className='text-2xl font-bold m-1'>Vet: {}</p>
-                        <p className='text-2xl font-bold m-1'>Vaccines: {}</p>
                     </div>
                 </div>
                 <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-5 m-5">
@@ -87,8 +85,6 @@ export default function DogInfoPage(){
                     <input className="border rounded-xl max-w-[250px] bg-neutral-200 placeholder:text-black font-bold text-center text-xl" type="weight" id="weight" name="weight" placeholder="Weight" required />
 
                     <input className="border rounded-xl max-w-[250px] bg-neutral-200 placeholder:text-black font-bold text-center text-xl" type="vet" id="vet" name="vet" placeholder="Vet" required />
-
-                    <input className="border rounded-xl max-w-[250px] bg-neutral-200 placeholder:text-black font-bold text-center text-xl" type="vaccines" id="vaccines" name="vaccines" placeholder="Vaccines" required />
 
                     <div className="flex flex-col justify-between mt-0 items-left">
                         <button type="submit" className="rounded-xl p-3 bg-gradient-to-r from-[#8cc084] to-white text-black w-[250px] font-bold text-xl">Add</button>

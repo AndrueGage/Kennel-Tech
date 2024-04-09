@@ -15,6 +15,17 @@ type Mutation {
     deleteDogById(id: ID!): Dog
     login(email: String!, password: String!): AuthPayLoad
     signup(email: String!, password: String!, firstName: String!, lastName: String!): AuthPayLoad
+    findDogById(dogId: ID!): Dog
+    updateDogInfo(
+        dogId: ID!
+        name: String
+        breed: String
+        age: String
+        sex: String
+        weight: String
+        vet: String
+        vaccine: String
+    ): Dog
 }
 
 type AuthPayLoad {
@@ -39,7 +50,7 @@ type Dog {
     name: String!
     breed: String!
     age: String!
-    sex: String!
+    sex: String
     weight: String!
     vet: String!
     vaccine: String!
