@@ -114,9 +114,25 @@ const resolvers = {
                 const dog = await Dog.findByIdAndUpdate(dogId, { name, breed, age, sex, weight, vet, vaccine }, { new: true });
                 return dog;
             } catch (error) {
-                throw new Error("Failed to update dog information");
+                throw new Error("Failed to update dog information!");
             }
-        }
+        },
+        findUserById: async (_, { userId }) => {
+            try {
+                const user = await User.findById(userId)
+                return user;
+            } catch (error) {
+                throw new Error("Failed to fetch user by ID");
+            }
+        },
+        updateUserInfo: async (_, { userId, address, email, vetOffice, emergencyContact }) => {
+            try {
+                const user =  await User.findByIdAndUpdate(userId, { address, email, vetOffice, emergencyContact}, { new: true });
+                return user;
+            } catch (error) {
+                throw new Error("Failed to update user information!")
+            }
+        },
     }
 };
 

@@ -47,5 +47,14 @@ query GetUsersDogReservations($id: ID!) {
 }
 `
 export const QUERY_DOG_INFO = gql`
-
+query GetDogById($getDogByIdId: ID!) {
+  getDogById(id: $getDogByIdId) {
+    age
+    breed
+    name
+    sex
+    vet
+    weight
+  }
+}
 `
