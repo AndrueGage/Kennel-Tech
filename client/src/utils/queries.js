@@ -46,3 +46,30 @@ query GetUsersDogReservations($id: ID!) {
   }
 }
 `
+export const QUERY_DOG_BY_ID = gql`
+query GetDogById($id: ID!) {
+  getDogById(id: $id) {
+    _id
+    age
+    name
+    breed
+    sex
+    weight
+    vet
+    vaccine
+    image
+    owner {
+      _id
+      firstName
+      lastName
+    }
+    reservations {
+      _id
+      reservationType
+      status
+      reservationDate_Time
+    }
+  }
+}
+
+`

@@ -30,6 +30,7 @@ const dogSchema = new mongoose.Schema({
     },
     vaccine: {
         type: String,
+        required: true
     },
     owner: {
         type: mongoose.SchemaTypes.ObjectId,

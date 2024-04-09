@@ -13,6 +13,17 @@ type Query {
 
 type Mutation {
     deleteDogById(id: ID!): Dog
+    updateDogById(
+        id: ID!
+        name: String
+        breed: String
+        age: String
+        sex: String
+        weight: String
+        vet: String
+        vaccine: String
+        image: String
+    ): Dog
     login(email: String!, password: String!): AuthPayLoad
     signup(email: String!, password: String!, firstName: String!, lastName: String!): AuthPayLoad
 }

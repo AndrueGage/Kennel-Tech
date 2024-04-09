@@ -11,7 +11,6 @@ class AuthService {
         return true;
     } else {
         // Redirect the user to the login page
-        window.location.href = '/login'; // Change '/login' to your actual login page URL
         return false;
     }
 }
@@ -36,7 +35,7 @@ class AuthService {
   }
 
   signup() {
-    window.location.assign('/login')
+    window.location.assign('/')
   }
 
   logout() {

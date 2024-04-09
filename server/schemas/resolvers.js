@@ -66,6 +66,34 @@ const resolvers = {
                 throw new Error("Error deleting dog");
             }
         },
+        updateDogById: async (_, { id, name, breed, age, sex, weight, vet, vaccine, image }) => {
+            try {
+                // Construct the update object with the fields to be updated
+                const updateFields = {
+                    name,
+                    breed,
+                    age,
+                    sex,
+                    weight,
+                    vet,
+                    vaccine,
+                    image
+                };
+
+                // Find the dog by ID and update its fields
+                const dog = await Dog.findByIdAndUpdate(id, updateFields, { new: true });
+
+                // Check if the dog exists
+                if (!dog) {
+                    throw new Error('Dog not found');
+                }
+
+                return dog; // Return the updated dog
+            } catch (e) {
+                console.error('Error updating dog by id', e);
+                throw new Error('Error updating dog by id');
+            }
+        },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
