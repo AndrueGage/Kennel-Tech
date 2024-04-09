@@ -110,3 +110,27 @@
     justify-content: left;
     align-items: left;
 }
+
+.contact-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.contributors {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.repo {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.contributor-links {
+    display: flex;
+    flex-direction: row;
+}
