@@ -1,7 +1,6 @@
 import ClientNav from '../components/ClientNav';
 import { useAuth } from '../utils/AuthContext';
 import { Link } from 'react-router-dom';
-import Container from '../components/Container';
 import GitHub from '../assets/GitHub-logo.png'
 
 export default function ContactPage() {

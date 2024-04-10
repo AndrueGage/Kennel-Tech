@@ -26,6 +26,32 @@ type Mutation {
     ): Dog
     login(email: String!, password: String!): AuthPayLoad
     signup(email: String!, password: String!, firstName: String!, lastName: String!): AuthPayLoad
+    updateUserById(
+        id: ID!
+        email: String
+        firstName: String
+        lastName: String
+        phone: String
+        vetOffice: String
+        emergencyContact: String
+        address: String
+      ): User
+      createNewDog(
+        name: String!
+        breed: String
+        age: String
+        sex: String
+        weight: String
+        vet: String
+        vaccine: String
+        owner: ID!
+      ): Dog
+    //   createNewReservation(
+    //     reservationType: String!
+    //     reservationDate_Time: String!
+    //     status: String!
+    //     dogs: ID!
+    //   ) :Reservation
 }
 
 type AuthPayLoad {
@@ -54,7 +80,7 @@ type Dog {
     weight: String!
     vet: String!
     vaccine: String!
-    image: String!
+    image: String
     owner: User
     reservations: [Reservation]
 }

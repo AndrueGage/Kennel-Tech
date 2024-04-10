@@ -16,9 +16,9 @@ export default function DogContainer({ dogData }) {
                   <span className="md:text-4xl text-lg font-bold text-black">{dog.name}</span>
                 </Link>
               ))}
-              <button className="rounded-xl p-3 pr-5 bg-neutral-200 flex justify-start gap-7 items-center w-full">
+              <Link to='/dogInfo' className="rounded-xl p-3 pr-5 bg-neutral-200 flex justify-start gap-7 items-center w-full">
                   <span className="text-4xl font-bold text-black">Add a new dog</span>
-              </button>
+              </Link>
           </div>
         </div>
       </div>
