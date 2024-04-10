@@ -10,6 +10,7 @@ import AccountPage from './pages/AccountPage';
 import CalendarPage from './pages/CalendarPage';
 import DogInfoPage from './pages/DogInfoPage';
 import ContactPage from './pages/ContactPage';
+import SignUpPage from './pages/SignUpPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,28 +23,38 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        index: true,
-        element: <HomePage />,
+        path: 'signup',
+        element: <SignUpPage />,
       },
       {
-        path: 'reservations',
-        element: <ReservationsPage />,
+        index: true,
+        element: <HomePage />,
       },
       {
         path: 'account',
         element: <AccountPage />,
       },
       {
-        path: 'calendar',
-        element: <CalendarPage />,
-      },
-      {
         path: 'doginfo',
         element: <DogInfoPage />,
+        children: [
+          {
+            path: ':id',
+            element: <DogInfoPage />
+          }
+        ],
       },
       {
         path: 'contact',
         element: <ContactPage />,
+      },
+      {
+        path: 'reservations',
+        element: <ReservationsPage />,
+      },
+      {
+        path: 'reservations/calendar',
+        element: <CalendarPage />,
       },
     ],
   },
