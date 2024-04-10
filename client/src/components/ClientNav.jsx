@@ -5,10 +5,10 @@ import UserWelcome from './UserWelcome'
 export default function ClientNav() {
     return (
         <header>
-        <div className="border-2 border-neutral-800 rounded-xl p-3 flex flex-col md:flex-row items-center justify-center">
+        <div className="border-2 border-neutral-800 rounded-xl p-3 flex flex-col md:flex-row items-center justify-center bg-[#8CC084]">
             <h1 className='font-bold text-xl md:text-2xl'>Kennel Tech</h1>
             <nav className='md:ml-auto px-4'>
-                <ul className="flex flex-col md:flex-row gap-5 justify-center items-center">
+                <ul className="flex flex-col md:flex-row gap-5 justify-center items-center font-semibold text-lg">
                     <li>
                         <Link to="/">Home</Link>
                     </li>

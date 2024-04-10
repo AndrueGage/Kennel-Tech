@@ -46,12 +46,6 @@ type Mutation {
         vaccine: String
         owner: ID!
       ): Dog
-    //   createNewReservation(
-    //     reservationType: String!
-    //     reservationDate_Time: String!
-    //     status: String!
-    //     dogs: ID!
-    //   ) :Reservation
 }
 
 type AuthPayLoad {

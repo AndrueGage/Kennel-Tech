@@ -108,9 +108,9 @@ export default function DogInfoPage() {
                 <div className='max-w-[1400px] mx-auto flex flex-col gap-8 my-5'>
                     <ClientNav />
 
-                    <div className='p-10 bg-stone-400 m-5 rounded-xl relative'>
+                    <div className='p-10 m-5 rounded-xl relative bg-[#8CC084]'>
 
-                        <h1 className='font-bold w-20'>My Dogs</h1>
+                        
                         <h3 className='font-bold w-20'>Dog Information</h3>
 
                         <form className='flex gap-5' onSubmit={handleSubmit}>
@@ -192,9 +192,8 @@ export default function DogInfoPage() {
         return (
             <div className='max-w-[1400px] mx-auto flex flex-col gap-8 my-5'>
                 <ClientNav />
-                <h1>My Dogs</h1>
-                    <h3>Add a new dog</h3>
-                    <div className='p-10 bg-stone-400 m-5 rounded-xl relative'>
+                    <h1 className='font-bold w-20 text-lg'>Add a new dog</h1>
+                    <div className='p-10 bg-[#8CC084] m-5 rounded-xl relative'>
 
                         <form className='flex gap-5' onSubmit={handleSubmitNewDog}>
                             <div className='flex flex-col gap-5'>

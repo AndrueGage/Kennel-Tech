@@ -84,7 +84,7 @@ export default function AccountPage() {
 
         <div>
           {data && (
-            <form className='flex gap-5 border rounded-xl w-full p-3 mt-5 bg-neutral-300' onSubmit={handleSubmit}>
+            <form className='flex gap-5 border rounded-xl w-full p-3 mt-5 bg-[#8CC084]' onSubmit={handleSubmit}>
               <div className='flex flex-col gap-5'>
                 <div className='flex gap-20 justify-start items-center'>
                   <label className='font-bold w-[120px]'>Email:</label>
@@ -114,7 +114,7 @@ export default function AccountPage() {
                   <label className='font-bold w-[120px]'>Address:</label>
                   <input onChange={handleChange} name='address' className='bg-white p-2 rounded-lg' type="text" value={formData.address} />
                 </div>
-                <button type='submit' className='border-2 rounded bg-white  font-semibold '>Save</button>
+                <button type='submit' className='border-2 rounded bg-[#C1D7AE]  font-semibold '>Save</button>
               </div>
           
             </form>

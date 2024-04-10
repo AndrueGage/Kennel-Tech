@@ -12,7 +12,7 @@ export default function UserWelcome() {
     })
 
     return (
-        <p className="bg-neutral-300 text-xl font-semibold py-2 px-3 rounded-lg">Welcome {data && data.getUserById.firstName + '!'}</p>
+        <p className="bg-[#C1D7AE] text-xl font-semibold py-2 px-3 rounded-lg">Welcome {data && data.getUserById.firstName + '!'}</p>
     )
 
 }

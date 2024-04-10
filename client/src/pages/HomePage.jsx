@@ -24,9 +24,9 @@ export default function HomePage() {
 
     if (data) {
         return (
-            <div className='max-w-[1400px] mx-auto flex flex-col gap-8 my-5'>
+            <div className='max-w-[1400px] mx-auto flex flex-col gap-8 my-5 '>
                 <ClientNav />
-                <div className="border-2 border-neutral-800 rounded-xl p-8 flex flex-col md:flex-row gap-3 justify-between">
+                <div className="border-2 border-neutral-800 rounded-xl p-8 flex flex-col md:flex-row gap-3 justify-between bg-[#8CC084]">
                     <div className="dog-cards">
                         <DogContainer dogData={data.getUserById.dogs} />
                     </div>

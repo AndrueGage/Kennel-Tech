@@ -23,7 +23,7 @@ export default function ContactPage() {
             <ClientNav />
             <h1 className='font-bold text-xl'> Project Contributors </h1>
             <p className='font-semibold text-lg'>A special thank you to all who worked so hard on this project!<br /> A Link to their GitHubs and this projects repository are below.</p>
-            <div className="border-2 border-neutral-800 rounded-xl p-8 flex flex-col gap-3 justify-between">
+            <div className="border-2 border-neutral-800 bg-[#8CC084] rounded-xl p-8 flex flex-col gap-3 justify-between">
                 <h2 className='font font-semibold text-lg '>Contributor Links</h2>
                 <hr className='w-full h-1 inline-block' />
                 {contributors.map(contributor => (
