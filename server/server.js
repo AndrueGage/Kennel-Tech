@@ -7,6 +7,7 @@ import http from 'http';
 import cors from 'cors';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 
+const path = require('path')
 const app = express();
 const port = 4000;
 const httpServer = http.createServer(app);
@@ -26,7 +27,7 @@ app.use('/graphql', cors(), express.json(), expressMiddleware(server, {
   },
 }));
 
-const path = require('path')
+
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/dist')));
