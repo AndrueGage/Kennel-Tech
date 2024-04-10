@@ -87,8 +87,8 @@ export default function DogInfoPage() {
 
                     <div className='p-10 bg-stone-400 m-5 rounded-xl relative'>
 
-                        <h1>My Dogs</h1>
-                        <h3>Dog(s) Information</h3>
+                        <h1 className='font-bold w-20'>My Dogs</h1>
+                        <h3 className='font-bold w-20'>Dog Information</h3>
 
                         <form className='flex gap-5' onSubmit={handleSubmit}>
                             <div>
@@ -150,7 +150,7 @@ export default function DogInfoPage() {
                                     <input onChange={handleChange} name='image' className='bg-white p-2 rounded-lg' type="text" value={formData.image}  />
                                 </div> */}
                             </div>
-                            <button type='submit' className='absolute top-10 right-10'>Save</button>
+                            <button type='submit' className='absolute top-10 right-10 border-2 rounded bg-white font-semibold '>Save</button>
                         </form>
 
 
