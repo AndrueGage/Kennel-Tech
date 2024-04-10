@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client'
 import { MUTATION_LOGIN } from '../utils/mutations';
 import auth from '../utils/auth';
 import Logo from '../assets/kennel-logo.png'
+import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
 
@@ -41,7 +42,7 @@ export default function LoginPage() {
                         <button type="submit" className="rounded-xl p-3 bg-gradient-to-r from-[#8cc084] to-white text-black w-[250px] font-bold text-xl">Login</button>
 
                         <span >or</span>
-                        <a href="/signup" class="rounded-xl p-3 bg-neutral-200 text-black w-[110px] font-bold text-xl">Sign Up</a>
+                        <Link to="/signup" className="rounded-xl p-3 bg-neutral-200 text-black w-[110px] font-bold text-xl">Sign Up</Link>
                     </div>
 
                 </form>

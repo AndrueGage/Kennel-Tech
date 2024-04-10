@@ -5,8 +5,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_DOG_USER_RESERVATIONS } from '../utils/queries';
 import auth from '../utils/auth';
 import { Link } from 'react-router-dom';
-
-
+import { useAuth } from '../utils/AuthContext';
 
 const columns = [
     {
@@ -53,6 +52,13 @@ const columns = [
 
 
 export default function ReservationsPage() {
+    const { loggedIn } = useAuth();
+
+    if (!loggedIn) {
+        // Handle case when user is not logged in
+        return <p>Please <Link to="/login"> log in</Link></p>;
+    }
+
     const user = auth.getUser();
     if (user) {
         const { loading, data, error } = useQuery(QUERY_DOG_USER_RESERVATIONS, { variables: { id: user.data._id } });

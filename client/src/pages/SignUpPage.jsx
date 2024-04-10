@@ -53,7 +53,7 @@ export default function LoginPage() {
                         <button type="submit" className="rounded-xl p-3 bg-gradient-to-r from-[#8cc084] to-white text-black w-[250px] font-bold text-xl">Sign up</button>
 
                         <span >or</span>
-                        <Link to="/login" class="rounded-xl p-3 bg-neutral-200 text-black w-[110px] font-bold text-xl text-center">Login</Link>
+                        <Link to="/login" className="rounded-xl p-3 bg-neutral-200 text-black w-[110px] font-bold text-xl text-center">Login</Link>
                     </div>
 
                 </form>
