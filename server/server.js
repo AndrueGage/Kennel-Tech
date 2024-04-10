@@ -8,6 +8,7 @@ import cors from 'cors';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 
 import path from 'path'
+const __dirname = path.resolve(path.dirname(decodeURI(new URL(import.meta.url).pathname)));
 const app = express();
 const port = 4000;
 const httpServer = http.createServer(app);
