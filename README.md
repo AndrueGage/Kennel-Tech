@@ -26,10 +26,14 @@ Run the following command on your CLI to run the application:
 Run the following command on your CLI to run the application:
     npm run develop
 ## Screenshot
-![Screenshot](/Kennel-Tech%20Screenshot.png)
-![](/Kennel-Tech%20Screenshot%20II.png)
-![](/Kennel-Tech%20-%20MyDogs%20Screenshot.png)
-![](/Kennel-Tech%20-%20MyDogs%20Screenshot.png)
+![Screenshot](https://github.com/AndrueGage/Kennel-Tech/assets/147120878/c51fb858-c6e1-46fe-89af-44094bbee485)
+
+![image](https://github.com/AndrueGage/Kennel-Tech/assets/147120878/353f780a-fca4-4279-88f1-897c7ade6b6a)
+
+![image](https://github.com/AndrueGage/Kennel-Tech/assets/147120878/0f0a1072-dffd-4ced-9268-d414e365fea0)
+
+![image](https://github.com/AndrueGage/Kennel-Tech/assets/147120878/6104eead-0f90-4ca0-8602-cfecbc2b9607)
+
 ## Collaborators
 [Andrue Desmarais](https://github.com/AndrueGage)
 [Nicholas Holder](https://github.com/nickholder6425)
