@@ -17,7 +17,8 @@ stress-free process for both pet owners and dog
   - [License](#license)
 ## Installation
 Clone the repository, navigate to the project folder on your CLI and run the following command to install Node.js:
-    npm install
+    ```text npm install
+
 ## Usage
 Run the following command on your CLI to run the application:
     npm run seed
