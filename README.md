@@ -39,8 +39,11 @@ Run the following command on your CLI to run the application:
 
 ## Collaborators
 [Andrue Desmarais](https://github.com/AndrueGage)
+
 [Nicholas Holder](https://github.com/nickholder6425)
+
 [William Dando](https://github.com/BrdwrdI)
+
 [Michael Gerlach](https://github.com/Gerlach0130)
 
 ## License
